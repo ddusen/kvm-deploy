@@ -1,0 +1,30 @@
+#author: Sen Du
+#email: dusen@gennlife.com
+#created: 2023-04-16 19:00:00
+#updated: 2023-08-10 15:00:00
+
+
+# 以下为安装 KVM 所需的环境变量
+## 控制日志颜色：浅蓝色
+export CSTART='\033[36m'
+export CEND='\033[0m'
+
+## 文件名称
+export FILENAME='kvm-parcels.20230810.tar.gz'
+
+## 当前机器
+export LOCAL_IP='10.0.5.2'
+## 虚拟机模版的镜像和配置文件
+export TEMPLATE_NAME='template-centos79'
+export VM_IMG_PATH='/cephfs/kvm/img'
+export VM_CONF_PATH='/etc/libvirt/qemu'
+
+## 控制参数
+### 虚拟机网关: 不同环境网关不一样，需要修改此参数
+export GATEWAY='10.0.5.1'
+
+### 大文件后台传输
+export BACKGROUND_SCP=false
+
+### 离线安装虚拟化
+OFFLINE=true

@@ -1,0 +1,9 @@
+#PhysicalIp VirtualName NewVirtualName
+10.0.5.2 demo-es6.in.gennlife.cn-62 demo-es6.in.gennlife.cn-62-delete_after_20230619
+10.0.5.3 demo-es5.in.gennlife.cn-61 demo-es5.in.gennlife.cn-61-delete_after_20230619
+10.0.5.3 demo-es8.in.gennlife.cn-64 demo-es8.in.gennlife.cn-64-delete_after_20230619
+10.0.5.3 demo-es7.in.gennlife.cn-63 demo-es7.in.gennlife.cn-63-delete_after_20230619
+10.0.5.4 demo-es4.in.gennlife.cn-54 demo-es4.in.gennlife.cn-54-delete_after_20230619
+10.0.5.6 demo-es1.in.gennlife.cn-51 demo-es1.in.gennlife.cn-51-delete_after_20230619
+10.0.5.6 demo-es3.in.gennlife.cn-53 demo-es3.in.gennlife.cn-53-delete_after_20230619
+10.0.5.6 demo-es2.in.gennlife.cn-52 demo-es2.in.gennlife.cn-52-delete_after_20230619

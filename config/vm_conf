@@ -1,0 +1,14 @@
+#PhysicalIp VirtualIp VirtualName VirtualCPU VirtualMem(G)
+10.0.5.2 10.0.5.224 dusen-hadoop-ip224 8 16
+10.0.5.3 10.0.5.225 dusen-hadoop-ip225 8 16
+10.0.5.4 10.0.5.228 dusen-hadoop-ip228 8 16
+10.0.5.6 10.0.5.229 dusen-hadoop-ip229 8 16
+10.0.5.8 10.0.5.232 dusen-hadoop-ip232 8 16
+10.0.5.3 10.0.5.233 dusen-hadoop-ip233 8 16
+10.0.5.6 10.0.5.237 dusen-hadoop-ip237 8 16
+10.0.5.8 10.0.5.238 dusen-hadoop-ip238 8 16
+10.0.5.2 10.0.5.15 liqiang-hadoop-ip15 8 16
+10.0.5.3 10.0.5.16 liqiang-hadoop-ip16 8 16
+10.0.5.4 10.0.5.17 liqiang-hadoop-ip17 8 16
+10.0.5.6 10.0.5.18 liqiang-hadoop-ip18 8 16
+10.0.5.8 10.0.5.19 liqiang-hadoop-ip19 8 16
