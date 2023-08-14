@@ -10,35 +10,10 @@ source 00_env
 
 #安装依赖基础软件
 function install_base() {
-    cat config/vm_info | grep -v "^#" | grep -v "^$" | while read ipaddr name passwd
+    cat config/vm_conf | grep -v "^#" | grep -v "^$" | awk '!a[$1]++{print}' | while read PhysicalIp VirtualIp VirtualName VirtualCPU VirtualMem
     do 
         echo -e "$CSTART>>>>$ipaddr [$(date +'%Y-%m-%d %H:%M:%S')]$CEND"
-
-        system_version=$(ssh -n $ipaddr "cat /etc/centos-release | sed 's/ //g'")
-        echo -e "$CSTART>>>>$ipaddr>$system_version$CEND"
-
-        if [[ "$system_version" == RockyLinuxrelease8* ]]; then
-            # 离线安装
-            if [ "$OFFLINE" == true ]; then 
-                ssh -n $ipaddr "rm -rf /tmp/virt-sysprep-bundle"
-                scp -r /opt/kvm-parcels/rocky8/virt-sysprep-bundle $ipaddr:/tmp/            
-                ssh -n $ipaddr "yum localinstall -y /tmp/virt-sysprep-bundle/*.rpm" || true
-            else # 在线安装
-                ssh -n $ipaddr "yum install -y /usr/bin/virt-sysprep" || true
-            fi
-        elif [[ "$system_version" == CentOSLinuxrelease7* ]]; then
-            # 离线安装
-            if [ "$OFFLINE" == true ]; then 
-                ssh -n $ipaddr "rm -rf /tmp/virt-sysprep-bundle"
-                scp -r /opt/kvm-parcels/centos7/virt-sysprep-bundle $ipaddr:/tmp/            
-                ssh -n $ipaddr "yum localinstall -y /tmp/virt-sysprep-bundle/*.rpm" || true
-            else # 在线安装
-                ssh -n $ipaddr "yum install -y /usr/bin/virt-sysprep" || true
-            fi
-        else 
-            echo "系统版本[$system_version]超出脚本处理范围" && false
-        fi
-
+        ssh -n $ipaddr "yum install -y /usr/bin/virt-sysprep" || true
     done
 }
 

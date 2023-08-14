@@ -25,6 +25,3 @@ export GATEWAY='10.0.5.1'
 
 ### 大文件后台传输
 export BACKGROUND_SCP=false
-
-### 离线安装虚拟化
-OFFLINE=true

@@ -18,23 +18,11 @@ function install_virt() {
         echo -e "$CSTART>>>>$ipaddr>$system_version$CEND"
 
         if [[ "$system_version" == RockyLinuxrelease8* ]]; then
-            # 离线安装
-            if [ "$OFFLINE" == true ]; then 
-                ssh -n $ipaddr "rm -rf /tmp/virt-bundle"
-                scp -r /opt/kvm-parcels/rocky8/virt-bundle $ipaddr:/tmp/            
-                ssh -n $ipaddr "yum localinstall -y /tmp/virt-bundle/*.rpm" || true
-            else # 在线安装
-                ssh -n $ipaddr "yum install -y qemu-kvm virt-manager virt-install libvirt" || true
-            fi
+            ssh -n $ipaddr "yum install -y qemu-kvm virt-manager virt-install libvirt" || true
+
         elif [[ "$system_version" == CentOSLinuxrelease7* ]]; then
-            # 离线安装
-            if [ "$OFFLINE" == true ]; then 
-                ssh -n $ipaddr "rm -rf /tmp/virt-bundle"
-                scp -r /opt/kvm-parcels/centos7/virt-bundle $ipaddr:/tmp/            
-                ssh -n $ipaddr "yum localinstall -y /tmp/virt-bundle/*.rpm" || true
-            else # 在线安装
-                ssh -n $ipaddr "yum install -y qemu-kvm qemu-kvm-tools virt-manager virt-install libvirt" || true
-            fi
+            ssh -n $ipaddr "yum install -y qemu-kvm qemu-kvm-tools virt-manager virt-install libvirt" || true
+
         else 
             echo "系统版本[$system_version]超出脚本处理范围" && false
         fi
@@ -52,19 +40,11 @@ function install_vnc() {
         echo -e "$CSTART>>>>$ipaddr>$system_version$CEND"
 
         if [[ "$system_version" == RockyLinuxrelease8* ]]; then
-            ssh -n $ipaddr "rm -rf /tmp/tigervnc-bundle"
-            scp -r /opt/kvm-parcels/rocky8/tigervnc-bundle $ipaddr:/tmp/            
-            ssh -n $ipaddr "yum localinstall -y /tmp/tigervnc-bundle/*.rpm" || true
+            ssh -n $ipaddr "yum install -y tigervnc-server" || true
 
         elif [[ "$system_version" == CentOSLinuxrelease7* ]]; then
-            # 离线安装
-            if [ "$OFFLINE" == true ]; then 
-                ssh -n $ipaddr "rm -rf /tmp/tigervnc-bundle"
-                scp -r /opt/kvm-parcels/centos7/tigervnc-bundle $ipaddr:/tmp/            
-                ssh -n $ipaddr "yum localinstall -y /tmp/tigervnc-bundle/*.rpm" || true
-            else # 在线安装
-                ssh -n $ipaddr "yum install -y tigervnc-selinux tigervnc-server" || true
-            fi
+            ssh -n $ipaddr "yum install -y tigervnc-server" || true
+            
         else 
             echo "系统版本[$system_version]超出脚本处理范围" && false
         fi
