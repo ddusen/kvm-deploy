@@ -1,0 +1,15 @@
+#IPAddr Hostname Passwd
+10.0.2.103 prerelease-k8s-master01-ip2.103 @Dev1111
+10.0.2.108 prerelease-k8s-master02-ip2.108 @Dev1111
+10.0.2.113 prerelease-k8s-master03-ip2.113 @Dev1111
+10.0.2.115 prerelease-k8s-worker01-ip2.115 @Dev1111
+10.0.2.116 prerelease-k8s-worker02-ip2.116 @Dev1111
+10.0.2.118 prerelease-db-ip2.118 @Dev1111
+10.0.2.120 prerelease-middle-ip2.120 @Dev1111
+10.0.2.122 prerelease-haproxy1-ip2.122 @Dev1111
+10.0.2.123 prerelease-haproxy2-ip2.123 @Dev1111
+10.0.2.147 prerelease-cdh-01-ip2.147 @Dev1111
+10.0.2.148 prerelease-cdh-02-ip2.148 @Dev1111
+10.0.2.154 prerelease-cdh-03-ip2.154 @Dev1111
+10.0.2.155 prerelease-cdh-04-ip2.155 @Dev1111
+10.0.2.156 prerelease-cdh-05-ip2.156 @Dev1111
