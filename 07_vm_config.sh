@@ -12,8 +12,8 @@ source 00_env
 function install_base() {
     cat config/vm_conf | grep -v "^#" | grep -v "^$" | awk '!a[$1]++{print}' | while read PhysicalIp VirtualIp VirtualName VirtualCPU VirtualMem
     do 
-        echo -e "$CSTART>>>>$ipaddr [$(date +'%Y-%m-%d %H:%M:%S')]$CEND"
-        ssh -n $ipaddr "yum install -y /usr/bin/virt-sysprep" || true
+        echo -e "$CSTART>>>>$PhysicalIp [$(date +'%Y-%m-%d %H:%M:%S')]$CEND"
+        ssh -n $PhysicalIp "yum install -y /usr/bin/virt-sysprep" || true
     done
 }
 
