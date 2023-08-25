@@ -9,9 +9,6 @@
 export CSTART='\033[36m'
 export CEND='\033[0m'
 
-## 文件名称
-export FILENAME='kvm-parcels.20230810.tar.gz'
-
 ## 当前机器
 export LOCAL_IP='10.0.5.2'
 ## 虚拟机模版的镜像和配置文件
