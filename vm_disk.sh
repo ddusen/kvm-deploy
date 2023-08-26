@@ -20,9 +20,9 @@ function identification() {
     fi
 }
 
-# 挂载新磁盘，根据 vm_conf_disk
+# 挂载新磁盘，根据 vm_info_disk
 function attack_disk() {
-    cat config/vm_conf_disk | grep -v "^#" | grep -v "^$" | while read PhysicalIp VirtualName VirtualDisk VirtualDiskDev
+    cat config/vm_info_disk | grep -v "^#" | grep -v "^$" | while read PhysicalIp VirtualName VirtualDisk VirtualDiskDev
     do 
         echo -e "$CSTART>>>>$PhysicalIp>$VirtualName>$VirtualDisk>$VirtualDiskDev$CEND"
         disk_name="$VirtualName-disk-${VirtualDisk}G"
