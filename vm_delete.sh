@@ -31,12 +31,11 @@ function delete_vm() {
         sleep 3
         
         #2.删除虚拟机镜像
-        IMG_FILE=`ssh $PhysicalIp cat /etc/libvirt/qemu/${VirtualName}.xml|awk -F"=|'" '/source file=/{print $3}'`
-        if [[ ! -z $IMG_FILE ]];then
-            for DDFILE in ${IMG_FILE};do
-                ssh -n $PhysicalIp "echo yes | rm $DDFILE" || true
-            done
-        fi
+        img_files=$(ssh -n $PhysicalIp "grep -oP \"source file='\K[^']+\" ${VM_CONF_PATH}/${VirtualName}.xml")
+        for img in ${img_files[@]}
+        do
+            ssh -n $PhysicalIp "echo yes | rm $img" || true
+        done
 
         #3.解除虚拟机关联
         ssh -n $PhysicalIp "virsh undefine --domain $VirtualName" || true
