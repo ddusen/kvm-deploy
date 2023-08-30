@@ -136,3 +136,6 @@ systemctl set-default graphical.target
 #重启系统，使设置生效
 reboot
 ```
+
+## Refs:
+1. KVM 通过virsh console连入虚拟机: https://blog.51cto.com/coolsky/3713851

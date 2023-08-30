@@ -23,6 +23,7 @@ function copy_template() {
         ssh -n $ipaddr "mkdir -p $VM_CONF_PATH"
 
         # 2.关闭模版机器
+        virsh destroy $TEMPLATE_NAME || true
         ssh -n $ipaddr "virsh destroy $TEMPLATE_NAME" || true
 
         # 3.模版镜像文件名称：TEMPLATE_NAME or TEMPLATE_NAME.img
