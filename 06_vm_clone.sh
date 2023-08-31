@@ -34,7 +34,7 @@ function clone_vm() {
             remaining_mem=$(( ${remaining_mem} / 1024 / 1024 ))
             tobe_allocated_mem=$(( ${tobe_allocated_mem} / 1024 / 1024 ))
             echo -e "\033[33m物理机可分配内存不足，无法创建新虚拟机，请调整后再进行！！！\033[0m"
-            echo -e "\033[33m总内存(GB):[$(( $total_mem ))] 已分配内存:[$(( $allocated_mem ))] 待分配内存:[$(( $tobe_allocated_mem ))] 剩余内存:[$(( $remaining_mem ))]\033[0m"
+            echo -e "\033[33m总内存(GB):[$total_mem] 已分配内存:[$allocated_mem] 待分配内存:[$tobe_allocated_mem] 剩余内存:[$remaining_mem]\033[0m"
             exit 128
         fi
 
