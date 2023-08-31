@@ -22,3 +22,6 @@ export GATEWAY='10.0.5.1'
 
 ### 大文件后台传输
 export BACKGROUND_SCP=false
+
+### 内存超分配系数（默认值 1.0）
+export MEMORY_OVERALLOCATION=1.0

@@ -16,11 +16,16 @@ function phy_mem_overview() {
     cat config/vm_info | grep -v "^#" | grep -v "^$" | while read ipaddr name passwd
     do 
         echo -e "$CSTART>>>>$ipaddr [$(date +'%Y-%m-%d %H:%M:%S')]$CEND"
-
-        total_mem=$(ssh -n $ipaddr "export LANG='en_US.UTF-8' && export LANGUAGE='en_US:en' && cat /proc/meminfo | grep 'MemTotal' | sed 's/[^0-9]//g'")
-        allocated_mem=$(ssh -n $ipaddr "export LANG='en_US.UTF-8' && export LANGUAGE='en_US:en' && virsh list --name | xargs -l virsh dominfo | grep 'Max memory' | sed 's/[^0-9]//g' | paste -sd+ | bc")
-        safety_mem=$(( 4 * 1024 * 1024)) # 系统安全余量内存 4G
-        remaining_mem=$(( $total_mem - $allocated_mem - $safety_mem)) # 剩余内存
+        ## 物理机总内存
+        total_mem=$(ssh -n $PhysicalIp "export LANG='en_US.UTF-8' && export LC_ALL='en_US.UTF-8' && export LANGUAGE='en_US:en' && cat /proc/meminfo | grep 'MemTotal' | sed 's/[^0-9]//g'")
+        ## 已经分配的内存
+        allocated_mem=$(ssh -n $PhysicalIp "export LANG='en_US.UTF-8' && export LC_ALL='en_US.UTF-8' && export LANGUAGE='en_US:en' && virsh list --name | xargs -l virsh dominfo | grep 'Max memory' | sed 's/[^0-9]//g' | paste -sd+ | bc")
+        ## 需要分配的内存
+        tobe_allocated_mem=$(( $VirtualMem * 1024 * 1024 ))
+        ## 系统安全余量
+        safety_mem=$(( 4 * 1024 * 1024))
+        ## 物理机剩余可用内存
+        remaining_mem=$(( $total_mem - $allocated_mem - $safety_mem ))
 
         echo "物理机总内存(MB):[$(( $total_mem / 1024 ))] 已分配内存:[$(( $allocated_mem / 1024 ))] 剩余内存:[$(( $remaining_mem / 1024 ))]"
         echo "物理机总内存(GB):[$(( $total_mem / 1024 / 1024 ))] 已分配内存:[$(( $allocated_mem / 1024 / 1024 ))] 剩余内存:[$(( $remaining_mem / 1024 / 1024 ))]"
