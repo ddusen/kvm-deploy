@@ -1,9 +1,6 @@
 #PhysicalIp VirtualName
-10.0.5.2 new-hadoop-01-ip224
-10.0.5.2 new-hadoop-02-ip225
-10.0.5.4 new-hadoop-03-ip228
-10.0.5.8 new-hadoop-04-ip229
-10.0.5.8 new-hadoop-05-ip232
-10.0.5.2 new-hadoop-06-ip233
-10.0.5.4 new-hadoop-07-ip237
-10.0.5.8 new-hadoop-08-ip238
+10.0.2.8 test-hdp-01-ip2.224
+10.0.2.9 test-hdp-02-ip2.225
+10.0.2.8 test-hdp-03-ip2.228
+10.0.2.9 test-hdp-04-ip2.229
+10.0.2.8 test-hdp-05-ip2.230

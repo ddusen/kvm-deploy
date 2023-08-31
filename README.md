@@ -38,32 +38,19 @@
 
 ## 二、其它
 - 1. 手动创建KVM虚拟网络
+
+[ifcfg-br0.centos7](./config/ifcfg-br0.centos7)
+[ifcfg-br0.rocky8](./config/ifcfg-br0.rocky8)
+
 ```bash
 ip='10.0.2.9'
 gateway='10.0.2.1'
 
 # 创建新网桥配置
-echo "
-TYPE=Bridge
-PROXY_METHOD=none
-BROWSER_ONLY=no
-BOOTPROTO=static
-DEFROUTE=yes
-IPV4_FAILURE_FATAL=no
-IPV6INIT=no
-IPV6_AUTOCONF=yes
-IPV6_DEFROUTE=yes
-IPV6_FAILURE_FATAL=no
-IPV6_ADDR_GEN_MODE=stable-privacy
-NAME=br0
-DEVICE=br0
-ONBOOT=yes
-IPADDR=TODO_IPADDR
-NETMASK=255.255.255.0
-GATEWAY=TODO_GATEWAY
-DNS1="114.114.114.114"
-IPV6_PRIVACY=no
-" > /etc/sysconfig/network-scripts/ifcfg-br0
+## centos7
+cp ifcfg-br0.centos7 /etc/sysconfig/network-scripts/ifcfg-br0
+## rocky8
+cp ifcfg-br0.rocky8 /etc/sysconfig/network-scripts/ifcfg-br0
 
 # 设置网桥
 sed -i "s/TODO_IPADDR/$ip/g" /etc/sysconfig/network-scripts/ifcfg-br0
